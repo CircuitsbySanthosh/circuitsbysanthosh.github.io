@@ -1,41 +1,13 @@
-/* ===============================
-   Global Variables (Nature Theme)
-================================= */
+/* =========================
+   ROOT THEME
+========================= */
 :root {
   --green: #2f855a;
-  --green-soft: rgba(47, 133, 90, 0.1);
-
-  --bg-light: #f9fafb;
+  --bg-light: #f7faf9;
   --text-light: #1a202c;
 
-  --bg-dark: #0b0f19;
-  --text-dark: #e5e7eb;
-}
-
-/* ===============================
-   Base Styles
-================================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
-body {
-  line-height: 1.7;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* ===============================
-   Light & Dark Mode
-================================= */
-@media (prefers-color-scheme: light) {
-  body {
-    background: var(--bg-light);
-    color: var(--text-light);
-  }
+  --bg-dark: #0f1a16;
+  --text-dark: #e6f1ec;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,115 +17,83 @@ body {
   }
 }
 
-/* ===============================
-   Soft Nature Background
-================================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(
-      circle at top left,
-      var(--green-soft),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      var(--green-soft),
-      transparent 45%
-    );
-  z-index: -1;
-}
-
-/* ===============================
-   Typography
-================================= */
-h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-h3 {
-  margin-top: 40px;
-  margin-bottom: 12px;
-  color: var(--green);
-}
-
-p {
-  margin-top: 16px;
-  font-size: 1.05rem;
-  opacity: 0.92;
-}
-
-/* ===============================
-   Layout Container
-================================= */
-.container {
-  max-width: 780px;
-  margin: auto;
-  padding: 80px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 18px;
-  backdrop-filter: blur(4px);
-}
-
-@media (prefers-color-scheme: dark) {
-  .container {
-    background: rgba(255, 255, 255, 0.04);
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--bg-light);
+    color: var(--text-light);
   }
 }
 
-/* ===============================
-   Hero Section
-================================= */
+/* =========================
+   GLOBAL
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+/* =========================
+   HERO
+========================= */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 4rem 6vw;
 }
 
 .hero-content {
   display: flex;
   align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 4rem;
+  width: 100%;
 }
 
-.hero img {
-  width: 160px;
-  height: 160px;
+.hero-left .profile-pic {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
   border-radius: 50%;
-  border: 3px solid var(--green);
 }
 
-/* ===============================
-   Subtitle
-================================= */
+/* =========================
+   HERO TEXT
+========================= */
+.tagline {
+  color: var(--green);
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
 .subtitle {
   color: var(--green);
-  margin-top: 8px;
+  margin-bottom: 2rem;
 }
 
-/* ===============================
-   Buttons
-================================= */
-.buttons {
-  margin-top: 25px;
+/* =========================
+   BUTTONS
+========================= */
+.hero-buttons {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .btn {
-  padding: 10px 22px;
-  border-radius: 30px;
-  border: 2px solid var(--green);
-  cursor: pointer;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -161,111 +101,65 @@ p {
 
 .btn.primary {
   background: var(--green);
-  color: #ffffff;
+  color: white;
 }
 
 .btn.primary:hover {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .btn.secondary {
-  background: transparent;
+  border: 1.5px solid var(--green);
   color: var(--green);
 }
 
 .btn.secondary:hover {
   background: var(--green);
-  color: #ffffff;
+  color: white;
 }
 
-/* ===============================
-   Projects Section
-================================= */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+/* =========================
+   PROJECTS
+========================= */
+.projects {
+  padding: 5rem 6vw;
 }
 
-.card {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+.projects-note {
+  opacity: 0.7;
 }
 
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+/* =========================
+   ABOUT PAGE
+========================= */
+.about {
+  padding: 4rem 6vw;
 }
 
-.card-body {
-  padding: 15px;
+.about-container {
+  max-width: 800px;
 }
 
-.tag {
-  font-size: 0.8rem;
-  margin-top: 6px;
-  color: var(--green);
+.about h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 }
 
-/* ===============================
-   Lists (Education)
-================================= */
-ul {
-  margin-top: 10px;
-  padding-left: 20px;
+.about h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-ul li {
-  margin-bottom: 8px;
+.about ul {
+  margin-left: 1.2rem;
 }
 
-/* ===============================
-   Links
-================================= */
-a {
-  color: inherit;
-  text-decoration: none;
+.back-btn {
+  display: inline-block;
+  margin-top: 2rem;
 }
-/* ===== HERO LAYOUT FIX ===== */
-
-.hero {
-  display: flex;
-  align-items: center;
-}
-
-.hero .container {
-  max-width: 1100px; /* wider ONLY for hero */
-}
-
-.hero-content {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: nowrap; /* FORCE side-by-side */
-}
-
-/* Greeting visibility */
-.hero small {
-  display: block;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 12px;
-  opacity: 0.85;
-}
-
-/* Prevent image from floating oddly */
-.hero img {
-  flex-shrink: 0;
-}
-
