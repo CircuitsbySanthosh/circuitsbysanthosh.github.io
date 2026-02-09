@@ -2,48 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Circuits by Santhosh</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Masani Santhosh Kumar</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- JS -->
-  <script src="js/main.js" defer></script>
+  <!-- Smooth system font -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
 <body>
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="container hero-container">
+    <div class="hero-content">
 
-      <div class="hero-content">
-        <!-- Profile Image -->
-        <img
-          src="https://via.placeholder.com/160"
-          alt="Masani Santhosh Kumar"
-          class="profile-img"
-        />
+      <!-- LEFT : PROFILE -->
+      <div class="hero-left">
+        <img src="assets/profile.jpg" alt="Masani Santhosh Kumar" class="profile-pic">
+      </div>
 
-        <!-- Text Content -->
-        <div class="hero-text">
-          <small class="greeting">Engineer for the future</small>
+      <!-- RIGHT : TEXT -->
+      <div class="hero-right">
+        <p class="tagline">ENGINEER FOR THE FUTURE</p>
 
-          <h1>Masani Santhosh Kumar</h1>
+        <h1 class="name">Masani Santhosh Kumar</h1>
 
-          <p class="subtitle">
-            Electronics and Communication Engineering Student
-          </p>
+        <p class="subtitle">
+          Electronics and Communication Engineering Student
+        </p>
 
-          <div class="buttons">
-            <button class="btn primary" onclick="scrollToProjects()">
-              Dive into Circuits
-            </button>
-
-            <a href="about.html" class="btn secondary">
-              About Me
-            </a>
-          </div>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn primary">Dive into Circuits</a>
+          <a href="about.html" class="btn secondary">About Me</a>
         </div>
       </div>
 
@@ -51,11 +43,9 @@
   </section>
 
   <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <div class="container">
-      <h2>We love to build</h2>
-      <p>Projects coming soon.</p>
-    </div>
+  <section id="projects" class="projects">
+    <h2>We Love to Build</h2>
+    <p class="projects-note">Projects coming soon.</p>
   </section>
 
 </body>
