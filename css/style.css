@@ -1,222 +1,165 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { Menu, X, ArrowRight, Leaf, Globe, Wind, Zap } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+/* ======================
+   THEME
+====================== */
+:root {
+  --green: #2f855a;
+  --bg-light: #f7faf9;
+  --text-light: #1a202c;
+  --bg-dark: #0f1a16;
+  --text-dark: #e6f1ec;
+}
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+@media (prefers-color-scheme: dark) {
+  body { background: var(--bg-dark); color: var(--text-dark); }
+}
+@media (prefers-color-scheme: light) {
+  body { background: var(--bg-light); color: var(--text-light); }
+}
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12">
-            <Leaf className="text-white w-6 h-6" />
-          </div>
-          <span className={`text-xl font-black tracking-tight ${isScrolled ? 'text-emerald-900' : 'text-white'}`}>EcoSync</span>
-        </div>
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
 
-        {/* Desktop Menu */}
-        <div className={`hidden md:flex items-center gap-8 font-medium ${isScrolled ? 'text-emerald-800' : 'text-emerald-50'}`}>
-          <a href="#" className="hover:text-emerald-400 transition-colors">Our Mission</a>
-          <a href="#" className="hover:text-emerald-400 transition-colors">Solutions</a>
-          <a href="#" className="hover:text-emerald-400 transition-colors">Impact</a>
-          <a href="#" className="hover:text-emerald-400 transition-colors">Journal</a>
-        </div>
+/* ======================
+   HERO
+====================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6vw;
+}
 
-        <div className="hidden md:flex items-center gap-4">
-          <button className={`px-5 py-2.5 rounded-full font-bold transition-all ${isScrolled ? 'text-emerald-600 hover:bg-emerald-50' : 'text-white hover:bg-white/10'}`}>
-            Sign In
-          </button>
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-200 transition-all active:scale-95">
-            Get Started
-          </button>
-        </div>
+.hero-content {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
 
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? (
-            <X className={isScrolled ? 'text-emerald-900' : 'text-white'} />
-          ) : (
-            <Menu className={isScrolled ? 'text-emerald-900' : 'text-white'} />
-          )}
-        </button>
-      </div>
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 bg-white border-t border-emerald-50 p-6 md:hidden shadow-xl"
-        >
-          <div className="flex flex-col gap-6 text-emerald-900 font-bold text-lg">
-            <a href="#" onClick={() => setIsMobileMenuOpen(false)}>Our Mission</a>
-            <a href="#" onClick={() => setIsMobileMenuOpen(false)}>Solutions</a>
-            <a href="#" onClick={() => setIsMobileMenuOpen(false)}>Impact</a>
-            <a href="#" onClick={() => setIsMobileMenuOpen(false)}>Journal</a>
-            <hr className="border-emerald-50" />
-            <button className="text-emerald-600 text-left">Sign In</button>
-            <button className="bg-emerald-600 text-white py-4 rounded-2xl w-full">Get Started</button>
-          </div>
-        </motion.div>
-      )}
-    </nav>
-  );
-};
+.tagline {
+  color: var(--green);
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
 
-export const Hero = () => {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+.name {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
 
-  const mainBg = "https://images.unsplash.com/photo-1766005193293-3b9c2a138493?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWplc3RpYyUyMHBpbmUlMjBmb3Jlc3QlMjB2YWxsZXklMjBhZXJpYWwlMjB2aWV3fGVufDF8fHx8MTc3MDcxODE3NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-  const leafDetail = "https://images.unsplash.com/photo-1673362622325-2852796f3474?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWNybyUyMGRldyUyMG9uJTIwZ3JlZW4lMjBsZWFmJTIwc3VubGlnaHR8ZW58MXx8fHwxNzcwNzE4MTczfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+.subtitle {
+  color: var(--green);
+  margin-top: 1rem;
+}
 
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-emerald-950">
-      {/* Background with Parallax */}
-      <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
-        <ImageWithFallback 
-          src={mainBg} 
-          alt="Majestic forest" 
-          className="w-full h-full object-cover opacity-60 scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/40 via-transparent to-emerald-950" />
-      </motion.div>
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
 
-      {/* Floating Elements */}
-      <motion.div 
-        style={{ y: y2 }}
-        className="absolute top-[20%] right-[10%] w-64 h-64 opacity-30 blur-[1px] hidden lg:block"
-      >
-        <ImageWithFallback src={leafDetail} alt="Leaf detail" className="w-full h-full object-cover rounded-full rotate-12" />
-      </motion.div>
+/* ======================
+   BUTTONS
+====================== */
+.btn {
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center gap-16">
-        <div className="flex-1 space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-sm mb-6 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Restoring our planet together
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight">
-              Design for a <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">Wilder World.</span>
-            </h1>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-emerald-50/70 max-w-2xl leading-relaxed mx-auto lg:mx-0"
-          >
-            We bridge the gap between human progress and natural preservation. Explore our eco-friendly architecture and sustainable city planning solutions.
-          </motion.p>
+.btn.primary {
+  background: var(--green);
+  color: white;
+}
+.btn.primary:hover { opacity: 0.85; }
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
-          >
-            <button className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-emerald-900/40 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group">
-              Start Your Journey
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-2xl font-bold text-lg backdrop-blur-md transition-all border border-white/10">
-              View Our Impact
-            </button>
-          </motion.div>
+.btn.secondary {
+  border: 1.5px solid var(--green);
+  color: var(--green);
+}
+.btn.secondary:hover {
+  background: var(--green);
+  color: white;
+}
 
-          {/* Stats */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="pt-12 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-white/10"
-          >
-            <div>
-              <p className="text-3xl font-black text-white">4.2M</p>
-              <p className="text-sm font-medium text-emerald-400 uppercase tracking-widest">Trees Planted</p>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-white">850+</p>
-              <p className="text-sm font-medium text-emerald-400 uppercase tracking-widest">Global Partners</p>
-            </div>
-            <div className="hidden md:block">
-              <p className="text-3xl font-black text-white">28%</p>
-              <p className="text-sm font-medium text-emerald-400 uppercase tracking-widest">Carbon Reduced</p>
-            </div>
-          </motion.div>
-        </div>
+/* ======================
+   PROJECTS
+====================== */
+.projects {
+  padding: 6vw;
+}
 
-        {/* Feature Cards / Visuals */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="flex-1 w-full max-w-xl hidden lg:block"
-        >
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4 pt-12">
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl group hover:bg-emerald-500/10 transition-colors">
-                <Globe className="w-10 h-10 text-emerald-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Biodiversity</h3>
-                <p className="text-sm text-emerald-50/50">Protecting endangered species through habitat restoration.</p>
-              </div>
-              <div className="bg-emerald-600 p-6 rounded-3xl shadow-2xl shadow-emerald-900/40">
-                <Wind className="w-10 h-10 text-white mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Clean Air</h3>
-                <p className="text-sm text-emerald-50/80">Filtering urban air with integrated vertical gardens.</p>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="aspect-square bg-emerald-900 rounded-3xl overflow-hidden border border-white/10">
-                <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1728921755234-ffb3f0721c28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGVhbiUyMG1pbmltYWwlMjBuYXR1cmUlMjBhcmNoaXRlY3R1cmUlMjBmb3Jlc3R8ZW58MXx8fHwxNzcwNzE4MTczfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
-                  alt="Architecture" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl group hover:bg-emerald-500/10 transition-colors">
-                <Zap className="w-10 h-10 text-emerald-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Renewable</h3>
-                <p className="text-sm text-emerald-50/50">100% solar and wind powered infrastructure solutions.</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <motion.div 
-        style={{ opacity }}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <div className="w-[1px] h-12 bg-gradient-to-b from-emerald-400 to-transparent" />
-        <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Scroll</span>
-      </motion.div>
-    </section>
-  );
-};
+/* ======================
+   ABOUT
+====================== */
+.about {
+  padding: 6vw;
+}
+.about-container {
+  max-width: 800px;
+}
 
-export { Navbar };
+/* ======================
+   ANIMATIONS
+====================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* delays */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 1s; }
