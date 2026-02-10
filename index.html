@@ -2,51 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Masani Santhosh Kumar</title>
 
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
+<!-- FLOATING TECH–NATURE OBJECTS -->
+<div class="ambient">
+  <span></span><span></span><span></span><span></span>
+</div>
 
-      <!-- LEFT -->
-      <img
-        src="https://via.placeholder.com/220"
-        alt="Profile"
-        class="profile-pic slide-left float"
-      />
+<section class="hero">
+  <div class="hero-inner">
 
-      <!-- RIGHT -->
-      <div class="hero-text">
-        <p class="tagline reveal">ENGINEER FOR THE FUTURE</p>
+    <img src="https://via.placeholder.com/220"
+         alt="Profile"
+         class="hero-img animate-left"/>
 
-        <h1 class="name slide-right">
-          Masani Santhosh Kumar
-        </h1>
+    <div class="hero-text">
+      <p class="tag animate-up">ENGINEER FOR THE FUTURE</p>
+      <h1 class="animate-right">Masani Santhosh Kumar</h1>
+      <p class="subtitle animate-up delay-1">
+        Electronics and Communication Engineering Student
+      </p>
 
-        <p class="subtitle reveal delay-1">
-          Electronics and Communication Engineering Student
-        </p>
-
-        <div class="buttons reveal delay-2">
-          <a href="#projects" class="btn primary">Dive into Circuits</a>
-          <a href="about.html" class="btn secondary">About Me</a>
-        </div>
+      <div class="actions animate-up delay-2">
+        <a href="#projects" class="btn primary">Dive into Circuits</a>
+        <a href="about.html" class="btn secondary">About Me</a>
       </div>
-
     </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects">
-    <h2 class="reveal">We Love to Build</h2>
-    <p class="reveal delay-1">Projects coming soon.</p>
-  </section>
+  </div>
+</section>
+
+<section id="projects" class="projects section">
+  <h2 class="animate-up">We Love to Build</h2>
+  <p class="animate-up delay-1">
+    Hardware • Simulation • DSP • Real-World Systems
+  </p>
+</section>
 
 </body>
 </html>
