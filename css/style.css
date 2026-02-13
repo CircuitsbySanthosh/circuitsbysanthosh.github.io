@@ -128,3 +128,44 @@ body {
     justify-content: center;
   }
 }
+/* ------------------ PROJECTS SECTION ------------------ */
+
+.projects {
+    padding: 100px 10%;
+    background: #0b1624;
+}
+
+.projects h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: #111f33;
+    padding: 30px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,255,200,0.1);
+}
+
+.project-card h3 {
+    margin-bottom: 15px;
+    color: #00ffc3;
+}
+
+.project-card p {
+    color: #b0c4d6;
+    line-height: 1.6;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border: 1px solid #00ffc3;
+}
