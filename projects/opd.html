@@ -2,195 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>OPD Waiting Time Simulator | Masani Santhosh Kumar</title>
+<title>OPD Waiting Time Analysis | Masani Santhosh Kumar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="../css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-
-/* Page Container */
-.container {
-    width: 85%;
-    margin: auto;
-}
-
-/* Hero */
-.project-hero {
-    padding: 100px 0 60px;
-    text-align: center;
-}
-
-.project-hero h1 {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.project-subtitle {
-    max-width: 700px;
-    margin: auto;
-    opacity: 0.8;
-}
-
-/* Section */
-.project-section {
-    padding: 60px 0;
-}
-
-.project-card {
-    background: #0f1f2e;
-    padding: 40px;
-    border-radius: 12px;
-    margin-bottom: 40px;
-}
-
-.project-card h2 {
-    margin-bottom: 20px;
-}
-
-.project-card p {
-    margin-bottom: 15px;
-    color: #9db3c8;
-}
-
-/* Code block */
-.code-block pre {
-    background: #111827;
-    padding: 20px;
-    border-radius: 10px;
-    overflow-x: auto;
-    font-size: 13px;
-}
-
-/* SLIDER */
-.slider {
-    position: relative;
-    max-width: 900px;
-    margin: 40px auto;
-    overflow: hidden;
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slides img {
-    width: 100%;
-    min-width: 100%;
-    max-height: 450px;
-    object-fit: contain;
-    background: #0f1f2e;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* Buttons */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-/* Dots */
-.dots {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.dots span {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background: #1abc9c;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    opacity: 0.4;
-}
-
-.dots .active {
-    opacity: 1;
-}
-
-/* Video */
-.video-section video {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 12px;
-}
-
-/* Back Button */
-.back-btn {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 10px 25px;
-    border: 1px solid #1abc9c;
-    border-radius: 6px;
-    text-decoration: none;
-    color: #1abc9c;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-</style>
 </head>
 
 <body>
 
+<section class="projects">
 <div class="container">
 
-<!-- HERO -->
-<section class="project-hero">
-    <h1>OPD Waiting Time Analysis using Probability & Random Processes</h1>
-    <p class="project-subtitle">
-        A simulation tool that models OPD queue behaviour using random arrival patterns
-        and probability-based service distributions to optimize doctor staffing.
-    </p>
-</section>
+<h2>OPD Waiting Time Analysis using Probability & Random Processes</h2>
 
-<!-- STAR -->
-<section class="project-section">
-<div class="project-card">
-<h2>STAR Explanation</h2>
+<!-- OVERVIEW -->
+<div class="project-card" style="margin-bottom:40px;">
+<h3>Project Overview</h3>
+<p>
+This simulator recreates a real OPD environment mathematically using stochastic modelling.
+Instead of static inputs, it generates random patient arrivals and service times,
+simulates complete queue behaviour minute-by-minute,
+and computes key performance indicators such as waiting time and doctor utilization.
+</p>
+<p>
+The goal is to convert unpredictable hospital crowding into measurable,
+data-driven staffing decisions.
+</p>
+</div>
+
+<!-- WHAT MAKES UNIQUE -->
+<div class="project-card" style="margin-bottom:40px;">
+<h3>What Makes This Tool Unique?</h3>
+<p>
+• Generates random patient arrivals<br>
+• Simulates consultations using probability distributions<br>
+• Models real queue behaviour dynamically<br>
+• Calculates waiting time & utilization<br>
+• Automatically detects overstaffing or understaffing<br>
+• Provides graphical decision support
+</p>
+</div>
+
+<!-- STAR FORMAT -->
+<div class="project-card" style="margin-bottom:40px;">
+<h3>STAR Explanation</h3>
 
 <p><strong>S — Situation:</strong><br>
-OPD crowding is unpredictable. Sudden spikes increase waiting time sharply.</p>
+OPD crowding is unpredictable. Sudden spikes in patient load drastically increase waiting time and reduce operational efficiency.
+</p>
+
+<br>
 
 <p><strong>T — Task:</strong><br>
-To mathematically analyze OPD queue flow and determine optimal doctor count.</p>
+To mathematically analyze OPD queue flow and determine optimal doctor staffing without overstaffing or increasing idle time.
+</p>
+
+<br>
 
 <p><strong>A — Action:</strong><br>
-Developed a Python-based stochastic simulation generating random arrivals,
-service times, queue progression, and staffing recommendation.</p>
+Developed a Python-based stochastic simulation tool that:
+<br>• Takes OPD parameters as input  
+<br>• Generates exponential arrival & service patterns  
+<br>• Simulates queue progression  
+<br>• Calculates waiting time & utilization  
+<br>• Recommends optimal doctor count  
+</p>
+
+<br>
 
 <p><strong>R — Result:</strong><br>
-Even a single doctor difference drastically changes waiting time, proving
-data-driven staffing importance.</p>
+The simulation proved that even a single doctor difference can significantly impact waiting time,
+highlighting the importance of data-driven hospital staffing.
+</p>
+
 </div>
-</section>
+
+<!-- HOW IT WORKS -->
+<div class="project-card" style="margin-bottom:40px;">
+<h3>How the System Works</h3>
+
+<p>
+1️⃣ User inputs session duration, number of doctors, patients, and consultation time.
+</p>
+<p>
+2️⃣ Random arrival times are generated using exponential distribution.
+</p>
+<p>
+3️⃣ Service times are simulated using stochastic modelling.
+</p>
+<p>
+4️⃣ Queue progression is calculated minute-by-minute.
+</p>
+<p>
+5️⃣ System computes:
+</p>
+
+<ul>
+<li>Average waiting time</li>
+<li>Maximum waiting time</li>
+<li>Doctor utilization percentage</li>
+<li>Staffing recommendation</li>
+</ul>
+
+</div>
+
+<!-- SOFTWARE -->
+<div class="project-card" style="margin-bottom:40px;">
+<h3>Software Used</h3>
+
+<p>
+• Google Colab (Cloud-based execution)<br>
+• Python<br>
+• Random & Math modules<br>
+• Matplotlib for visualization
+</p>
+
+</div>
 
 <!-- CODE -->
-<section class="project-section">
-<div class="project-card">
-<h2>Core Simulation Code</h2>
+<div class="project-card" style="margin-bottom:40px;">
+<h3>Core Simulation Code (Python)</h3>
 
-<div class="code-block">
-<pre><code>
+<pre>
 import random
 import math
 import matplotlib.pyplot as plt
@@ -429,85 +364,36 @@ else:
     plt.tight_layout()
     plt.show()
 
-</code></pre>
-</div>
+</pre>
 
 </div>
-</section>
 
 <!-- RESULTS -->
-<section class="project-section">
-<div class="project-card">
-<h2>Simulation Results</h2>
+<div class="project-card" style="margin-bottom:40px;">
+<h3>Simulation Results</h3>
 
-<div class="slider">
-<div class="slides" id="slides">
-<img src="../assets/opd1.png">
-<img src="../assets/opd2.png">
-<img src="../assets/opd3.png">
-<img src="../assets/opd4.png">
-<img src="../assets/opd5.png">
-</div>
-
-<button class="prev" onclick="moveSlide(-1)">❮</button>
-<button class="next" onclick="moveSlide(1)">❯</button>
-</div>
-
-<div class="dots" id="dots"></div>
+<img src="../assets/opd1.png" class="project-image">
+<img src="../assets/opd2.png" class="project-image">
+<img src="../assets/opd3.png" class="project-image">
+<img src="../assets/opd4.png" class="project-image">
+<img src="../assets/opd5.png" class="project-image">
 
 </div>
-</section>
 
 <!-- VIDEO -->
-<section class="project-section video-section">
-<div class="project-card">
-<h2>Simulation Demo Video</h2>
+<div class="project-card" style="margin-bottom:40px;">
+<h3>Demo Video</h3>
 
-<video controls>
+<video controls style="width:100%; max-width:800px; border-radius:12px;">
 <source src="../assets/opd-demo.mp4" type="video/mp4">
 </video>
 
 </div>
-</section>
 
-<a href="../index.html" class="back-btn">Back to Projects</a>
+<a href="../index.html" class="btn secondary">Back to Projects</a>
 
 </div>
-
-<script>
-let currentIndex = 0;
-const slides = document.getElementById("slides");
-const totalSlides = slides.children.length;
-const dotsContainer = document.getElementById("dots");
-
-for(let i = 0; i < totalSlides; i++){
-    const dot = document.createElement("span");
-    dot.addEventListener("click", () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-}
-
-function updateDots(){
-    const dots = dotsContainer.children;
-    for(let i = 0; i < dots.length; i++){
-        dots[i].classList.remove("active");
-    }
-    dots[currentIndex].classList.add("active");
-}
-
-function moveSlide(step){
-    currentIndex = (currentIndex + step + totalSlides) % totalSlides;
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateDots();
-}
-
-function goToSlide(index){
-    currentIndex = index;
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateDots();
-}
-
-updateDots();
-</script>
+</section>
 
 </body>
 </html>
