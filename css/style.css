@@ -225,3 +225,31 @@ pre {
         font-size: 36px;
     }
 }
+/* ============================= */
+/* RESULT SLIDER IMAGES FIX */
+/* ============================= */
+
+.result-slider {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    background: #0f1f2e;
+    padding: 20px;
+    border-radius: 10px;
+}
