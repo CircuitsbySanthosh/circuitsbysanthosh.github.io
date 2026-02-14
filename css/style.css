@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth; /* Smooth Scroll Enabled */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: #071421;
@@ -24,10 +28,14 @@ body {
 }
 
 /* =========================
-   HERO SECTION
+   HERO SECTION (FIXED)
 ========================= */
 .hero {
-    padding: 100px 10%;
+    min-height: 100vh;          /* FULL SCREEN HERO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;             /* Removed top padding */
 }
 
 .hero-container {
@@ -106,7 +114,7 @@ body {
    PROJECTS SECTION
 ========================= */
 .projects {
-    padding: 80px 10%;
+    padding: 120px 10%; /* More spacing after hero */
 }
 
 .projects h2 {
@@ -224,7 +232,7 @@ pre {
 }
 
 /* =========================
-   RESULT SLIDER (FIXED)
+   RESULT SLIDER
 ========================= */
 .result-slider {
     position: relative;
@@ -271,13 +279,8 @@ pre {
     color: #071421;
 }
 
-.prev {
-    left: -60px;
-}
-
-.next {
-    right: -60px;
-}
+.prev { left: -60px; }
+.next { right: -60px; }
 
 /* =========================
    RESPONSIVE
@@ -293,18 +296,18 @@ pre {
         text-align: center;
     }
 
+    .hero {
+        min-height: auto;
+        padding: 100px 10%;
+    }
+
     .hero-image img {
         width: 200px;
         height: 200px;
     }
 
-    .prev {
-        left: 10px;
-    }
-
-    .next {
-        right: 10px;
-    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
 }
 
 @media (max-width: 600px) {
