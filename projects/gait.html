@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Time Gait Analysis System | Masani Santhosh Kumar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Real-Time Footstep (Gait) Analysis System using Arduino and Digital Signal Processing techniques.">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<section class="projects">
+    <div class="container">
+
+        <h2>Real-Time Footstep (Gait) Analysis System</h2>
+
+        <!-- Project Overview -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Project Overview</h3>
+            <p>
+                This project focuses on analyzing human walking patterns in real time
+                by sensing footstep signals and processing them using basic
+                Digital Signal Processing (DSP) techniques on an Arduino platform.
+            </p>
+            <p>
+                Unlike simple step counters, this system studies how a person walks,
+                extracting meaningful gait parameters such as step count and step timing.
+            </p>
+        </div>
+
+        <!-- What Makes It Meaningful -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>What Makes This Project Meaningful?</h3>
+            <p>
+                • Focuses on walking behavior, not just step counting<br>
+                • Uses low-cost sensors and Arduino platform<br>
+                • Extracts meaningful gait parameters like step timing<br>
+                • Applies real DSP concepts such as filtering and peak detection<br>
+                • Converts raw sensor signals into understandable walking information<br>
+                • Designed as a preventive and awareness-based monitoring system
+            </p>
+        </div>
+
+        <!-- STAR FORMAT -->
+
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>S — Situation</h3>
+            <p>
+                Changes in walking patterns often go unnoticed in daily life.
+                Irregular footsteps, fatigue, imbalance, or asymmetry can slowly
+                lead to long-term mobility issues if ignored.
+                Early detection of abnormal gait patterns can help in preventive care.
+            </p>
+        </div>
+
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>T — Task</h3>
+            <p>
+                To design a low-cost, real-time system capable of detecting footsteps
+                and analyzing basic gait characteristics using simple hardware
+                and algorithmic logic implemented on an embedded platform.
+            </p>
+        </div>
+
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>A — Action</h3>
+            <p>
+                I developed a footstep sensing setup using Arduino and a pressure-based
+                sensor placed at the foot-ground interaction point.
+            </p>
+            <p>
+                The acquired analog signals were processed using basic digital filtering
+                techniques to remove noise. Peak detection algorithms were implemented
+                to identify individual steps and calculate step timing.
+            </p>
+            <p>
+                Extracted parameters include:
+                <br>
+                • Step Count<br>
+                • Step Interval (Timing between steps)<br>
+                • Detection of irregular timing patterns
+            </p>
+        </div>
+
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>R — Result</h3>
+            <p>
+                The system successfully detected footsteps in real time and demonstrated
+                how basic DSP-based algorithms can analyze gait behavior using simple hardware.
+            </p>
+            <p>
+                This project proves that even low-cost embedded systems can extract
+                meaningful human movement patterns through proper signal processing.
+            </p>
+        </div>
+
+        <!-- System Workflow -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>System Workflow</h3>
+            <p>
+                1. Sensor placed at foot-ground interaction detects pressure variations.<br>
+                2. Arduino reads analog signal continuously.<br>
+                3. Digital filtering reduces noise in the raw signal.<br>
+                4. Peak detection algorithm identifies valid footsteps.<br>
+                5. Step timing is calculated from interval between detected peaks.<br>
+                6. Processed data is displayed via Serial Monitor / Output interface.
+            </p>
+        </div>
+
+        <a href="../index.html#projects" class="btn secondary">Back to Projects</a>
+
+    </div>
+</section>
+
+</body>
+</html>
+
+        <!-- Components -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Components Used</h3>
+            <p>
+                • Arduino Uno  
+                • FSR sensor 
+                • Resistor  
+            </p>
+        </div>
+
+        <!-- Pin to Pin connections -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>pin to pin connections</h3>
+            <img src="../gait-pip.jpg" 
+                 alt="Pin to Pin connections" 
+                 style="width:100%; border-radius:8px;">
+        </div>
+
+        <!-- Hardware Setup -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Hardware Setup</h3>
+            <img src="../gait-hardware.jpg" 
+                 alt="Hardware Setup" 
+                 style="width:100%; border-radius:8px;">
+        </div>
+
+        <!-- Arduino Code Section -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Arduino Code</h3>
+            <pre style="background:#111827; padding:20px; border-radius:8px; overflow-x:auto; color:#fff;">
+const int fsrPin = A0;
+const int threshold = 400;
+
+int stepCount = 0;
+bool stepActive = false;
+
+unsigned long lastStepTime = 0;
+unsigned long stepIntervals[5];
+int intervalIndex = 0;
+
+int peakPressure = 0;
+
+// Filter buffer
+int buffer[5] = {0};
+int bufIndex = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("REAL-TIME GAIT ANALYSIS");
+  Serial.println("----------------------");
+}
+
+void loop() {
+
+  int raw = analogRead(fsrPin);
+
+  // Moving average filter
+  buffer[bufIndex] = raw;
+  bufIndex = (bufIndex + 1) % 5;
+
+  int filtered = 0;
+  for (int i = 0; i < 5; i++) {
+    filtered += buffer[i];
+  }
+  filtered /= 5;
+
+  // Detect footstep
+  if (filtered > threshold && !stepActive) {
+    stepActive = true;
+    stepCount++;
+
+    unsigned long now = millis();
+
+    if (stepCount > 1) {
+      stepIntervals[intervalIndex] = now - lastStepTime;
+      intervalIndex = (intervalIndex + 1) % 5;
+    }
+
+    lastStepTime = now;
+    peakPressure = filtered;
+  }
+
+  // Track peak pressure during step
+  if (stepActive && filtered > peakPressure) {
+    peakPressure = filtered;
+  }
+
+  // End of step
+  if (filtered < threshold - 50 && stepActive) {
+    stepActive = false;
+
+    // Compute average step time
+    unsigned long avgStepTime = 0;
+    int valid = min(stepCount - 1, 5);
+
+    for (int i = 0; i < valid; i++) {
+      avgStepTime += stepIntervals[i];
+    }
+    if (valid > 0) avgStepTime /= valid;
+
+    // Stability check
+    bool unstable = false;
+    for (int i = 0; i < valid; i++) {
+      if (abs((long)stepIntervals[i] - (long)avgStepTime) > 150) {
+        unstable = true;
+      }
+    }
+
+    // Pressure level
+    String pressureLevel;
+    if (peakPressure > 700) pressureLevel = "HIGH";
+    else if (peakPressure > 500) pressureLevel = "NORMAL";
+    else pressureLevel = "LOW";
+
+    // Overall status
+    String status;
+    String recommendation;
+
+    if (pressureLevel == "HIGH" || unstable) {
+      status = "RISK";
+      recommendation = "Reduce load and take rest";
+    } else {
+      status = "NORMAL";
+      recommendation = "No action required";
+    }
+
+    // DISPLAY OUTPUT
+    Serial.println("Steps Taken       : " + String(stepCount));
+    Serial.println("Avg Step Time (ms): " + String(avgStepTime));
+    Serial.println("Foot Pressure     : " + pressureLevel);
+    Serial.println("Walking Stability : " + String(unstable ? "UNSTABLE" : "STABLE"));
+    Serial.println("Overall Status    : " + status);
+    Serial.println("Recommendation    : " + recommendation);
+    Serial.println("----------------------");
+  }
+
+  delay(10);
+}
+
+            </pre>
+        </div>
+
+        <a href="../index.html#projects" class="btn secondary">Back to Projects</a>
+
+    </div>
+</section>
+
+</body>
+</html>
