@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Posture Correction System | Masani Santhosh Kumar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* PROJECT PAGE SPECIFIC */
+
+.project-hero {
+    padding: 120px 8%;
+    background: linear-gradient(135deg, #071421, #0c1f33);
+}
+
+.project-hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.project-hero p {
+    max-width: 700px;
+    color: #b0c4d8;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.section {
+    padding: 100px 8%;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.section p {
+    max-width: 800px;
+    line-height: 1.8;
+    color: #c8d6e5;
+}
+
+.workflow-box {
+    background: #0f2a40;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+.image-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.component-list {
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+.component-list li {
+    margin-bottom: 8px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 28px;
+    background: #14b8a6;
+    color: #071421;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-btn:hover {
+    background: #0ea5a3;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+<section class="project-hero">
+    <h1>Posture Correction System</h1>
+    <p>
+        A real-time posture monitoring system built using dual MPU6050 sensors,
+        ultrasonic-based activation, and visual feedback indicators to promote
+        healthier sitting habits.
+    </p>
+</section>
+
+<!-- PROBLEM -->
+<section class="section">
+    <h2>Problem</h2>
+    <p>
+        Poor sitting posture is common among students and professionals,
+        leading to long-term neck and back issues.
+        Continuous posture awareness can prevent chronic spinal problems.
+    </p>
+</section>
+
+<!-- OBJECTIVE -->
+<section class="section">
+    <h2>Objective</h2>
+    <p>
+        To design a low-cost, power-efficient embedded system that
+        detects incorrect posture in real time and alerts the user instantly.
+    </p>
+</section>
+
+<!-- SOLUTION -->
+<section class="section">
+    <h2>Solution Overview</h2>
+    <p>
+        The system uses two MPU6050 sensors to monitor upper and lower body angles.
+        An ultrasonic sensor activates the system only when a person is detected
+        for more than 5 seconds to save power.
+    </p>
+
+    <div class="workflow-box">
+        <strong>System Logic:</strong><br><br>
+        Person detected for 5 sec → System activates (3 beeps)<br>
+        Both angles within safe range → 🟢 Green LED<br>
+        Slight bend detected → 🟡 Yellow LED + slow beep<br>
+        Severe bend detected → 🔴 Red LED + fast beep<br>
+        No user for 5 sec → System turns off (1 beep)
+    </div>
+</section>
+
+<!-- HARDWARE IMAGE -->
+<section class="section">
+    <h2>Hardware Setup</h2>
+    <div class="image-container">
+        <img src="assets/posture-hardware.jpg" alt="Posture System Hardware">
+    </div>
+</section>
+
+<!-- CIRCUIT IMAGE -->
+<section class="section">
+    <h2>Circuit Diagram</h2>
+    <div class="image-container">
+        <img src="assets/posture-circuit.jpg" alt="Posture System Circuit Diagram">
+    </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section">
+    <h2>Components Used</h2>
+    <ul class="component-list">
+        <li>Arduino Uno</li>
+        <li>2 × MPU6050 Sensors</li>
+        <li>Ultrasonic Sensor (HC-SR04)</li>
+        <li>OLED Display (SSD1306)</li>
+        <li>Green, Yellow, Red LEDs</li>
+        <li>Buzzer</li>
+        <li>Resistors</li>
+        <li>Jumper Wires</li>
+    </ul>
+</section>
+
+<!-- RESULT -->
+<section class="section">
+    <h2>Impact</h2>
+    <p>
+        The prototype successfully differentiates posture levels
+        and provides real-time feedback. This system demonstrates
+        how simple embedded electronics can contribute to
+        preventive healthcare and ergonomic awareness.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+</section>
+
+</body>
+</html>
