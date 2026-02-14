@@ -10,20 +10,20 @@
 
 <style>
 
-/* Container */
+/* Page Container */
 .container {
     width: 85%;
     margin: auto;
 }
 
-/* HERO */
+/* Hero */
 .project-hero {
     padding: 100px 0 60px;
     text-align: center;
 }
 
 .project-hero h1 {
-    font-size: 42px;
+    font-size: 40px;
     margin-bottom: 15px;
 }
 
@@ -33,6 +33,7 @@
     opacity: 0.8;
 }
 
+/* Section */
 .project-section {
     padding: 60px 0;
 }
@@ -53,34 +54,37 @@
     color: #9db3c8;
 }
 
+/* Code block */
+.code-block pre {
+    background: #111827;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+
 /* SLIDER */
-<div class="result-slider">
+.slider {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+}
 
-    <div class="slide active">
-        <img src="assets/opd1.jpg" alt="Result 1">
-    </div>
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
 
-    <div class="slide">
-        <img src="assets/opd2.jpg" alt="Result 2">
-    </div>
-
-    <div class="slide">
-        <img src="assets/opd3.jpg" alt="Result 3">
-    </div>
-
-    <div class="slide">
-        <img src="assets/opd4.jpg" alt="Result 4">
-    </div>
-
-    <div class="slide">
-        <img src="assets/opd5.jpg" alt="Result 5">
-    </div>
-
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-
-</div>
-
+.slides img {
+    width: 100%;
+    min-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    background: #0f1f2e;
+    padding: 20px;
+    border-radius: 10px;
+}
 
 /* Buttons */
 .prev, .next {
@@ -98,6 +102,7 @@
 .prev { left: 10px; }
 .next { right: 10px; }
 
+/* Dots */
 .dots {
     text-align: center;
     margin-top: 15px;
@@ -111,7 +116,7 @@
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .dots .active {
@@ -138,6 +143,10 @@
     color: #1abc9c;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 </style>
 </head>
 
@@ -154,117 +163,35 @@
     </p>
 </section>
 
-<!-- OVERVIEW -->
+<!-- STAR -->
 <section class="project-section">
 <div class="project-card">
-<h2>Overview</h2>
-<p>
-This simulator recreates an OPD environment mathematically rather than using fixed values.
-It generates random patient arrivals, simulates consultation durations, models queue flow minute-by-minute,
-and calculates performance metrics such as waiting time and doctor utilization.
-</p>
-<p>
-The goal is to transform unpredictable hospital crowding into measurable,
-data-driven decision support.
-</p>
-</div>
-</section>
-
-<!-- STAR FORMAT -->
-<section class="project-section">
-<div class="project-card">
-<h2>Project Explained in STAR Format</h2>
+<h2>STAR Explanation</h2>
 
 <p><strong>S — Situation:</strong><br>
-OPD crowding is unpredictable. When patient load spikes suddenly,
-waiting time increases sharply, harming satisfaction and efficiency.
-</p>
+OPD crowding is unpredictable. Sudden spikes increase waiting time sharply.</p>
 
 <p><strong>T — Task:</strong><br>
-To mathematically analyze OPD queue flow and determine how many doctors
-are needed for minimum waiting time without overstaffing.
-</p>
+To mathematically analyze OPD queue flow and determine optimal doctor count.</p>
 
 <p><strong>A — Action:</strong><br>
-I developed a Python-based simulation tool that:
-• Takes OPD input parameters  
-• Generates random arrival and service distributions  
-• Simulates queue progression minute-by-minute  
-• Calculates waiting time and utilization metrics  
-• Automatically detects staffing mismatch  
-• Provides visual graph-based insights  
-</p>
+Developed a Python-based stochastic simulation generating random arrivals,
+service times, queue progression, and staffing recommendation.</p>
 
 <p><strong>R — Result:</strong><br>
-The simulation demonstrated that even a single doctor difference
-can drastically impact waiting time, proving the importance of
-data-driven staffing decisions.
-</p>
-
+Even a single doctor difference drastically changes waiting time, proving
+data-driven staffing importance.</p>
 </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- CODE -->
 <section class="project-section">
 <div class="project-card">
-<h2>How the System Works</h2>
-
-<p>1️⃣ User enters number of doctors, patient arrival rate, and average consultation time.</p>
-<p>2️⃣ Random arrival times are generated using probability distribution logic.</p>
-<p>3️⃣ Service times are simulated using stochastic modelling.</p>
-<p>4️⃣ Queue builds dynamically based on arrival vs service rate.</p>
-<p>5️⃣ The system calculates:</p>
-
-<ul>
-<li> Average waiting time</li>
-<li> Maximum waiting time</li>
-<li> Doctor utilization percentage</li>
-<li> Queue length variations</li>
-</ul>
-
-<p>
-6️⃣ Based on results, the simulator recommends increasing or reducing staffing.
-</p>
-
-</div>
-</section>
-<!-- SOFTWARE USED -->
-<section class="project-section">
-<div class="project-card">
-
-<h2>Software Used</h2>
-
-<p>
-The simulation was developed and executed using:
-</p>
-
-<ul>
-<li> <strong>Google Colab</strong> – For cloud-based Python execution</li>
-<li> <strong>Python</strong> – Core simulation logic</li>
-<li> <strong>Random & Math Modules</strong> – Probability modeling</li>
-</ul>
-
-<p>
-Google Colab allowed rapid testing, visualization, and parameter experimentation
-without requiring local installation.
-</p>
-
-</div>
-</section>
-<!-- CODE SECTION -->
-<section class="project-section">
-<div class="project-card">
-
-<h2>Python Simulation Code</h2>
-
-<p>
-Below is the core implementation of the OPD queue simulator
-based on M/M/c queue modelling and stochastic processes.
-</p>
+<h2>Core Simulation Code</h2>
 
 <div class="code-block">
 <pre><code>
-  import random
+import random
 import math
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
@@ -501,26 +428,14 @@ else:
 
     plt.tight_layout()
     plt.show()
+
 </code></pre>
 </div>
 
-<p>
-The full implementation includes:
-</p>
-
-<ul>
-<li> Random patient arrival generation</li>
-<li> Exponential service time modelling</li>
-<li> Doctor assignment logic</li>
-<li> Waiting time computation</li>
-<li> Utilisation calculation</li>
-<li> Graphical performance visualization</li>
-<li> Automatic staffing recommendation logic</li>
-</ul>
-
 </div>
 </section>
-<!-- RESULTS SLIDER -->
+
+<!-- RESULTS -->
 <section class="project-section">
 <div class="project-card">
 <h2>Simulation Results</h2>
@@ -560,7 +475,6 @@ The full implementation includes:
 </div>
 
 <script>
-
 let currentIndex = 0;
 const slides = document.getElementById("slides");
 const totalSlides = slides.children.length;
@@ -593,7 +507,6 @@ function goToSlide(index){
 }
 
 updateDots();
-
 </script>
 
 </body>
