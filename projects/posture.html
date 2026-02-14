@@ -136,8 +136,206 @@
         <div class="project-card" style="margin-bottom:40px;">
             <h3>Arduino Code</h3>
             <pre style="background:#111827; padding:20px; border-radius:8px; overflow-x:auto; color:#fff;">
-// Final integrated Arduino code will be added here
-// after sensor calibration and threshold tuning.
+#include <Wire.h>
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+Adafruit_MPU6050 mpuUpper;
+Adafruit_MPU6050 mpuLower;
+
+// LED Pins
+#define GREEN_LED 2
+#define YELLOW_LED 3
+#define RED_LED 4
+
+// Buzzer
+#define BUZZER 8
+
+// Ultrasonic
+#define TRIG 9
+#define ECHO 10
+
+// Angle Thresholds
+#define SLIGHT_THRESHOLD 15
+#define SEVERE_THRESHOLD 25
+
+// Activation timing
+unsigned long detectStartTime = 0;
+bool systemActive = false;
+
+// Calibration offsets
+float upperOffset = 0;
+float lowerOffset = 0;
+
+void beep(int times, int delayTime) {
+  for (int i = 0; i < times; i++) {
+    digitalWrite(BUZZER, HIGH);
+    delay(delayTime);
+    digitalWrite(BUZZER, LOW);
+    delay(delayTime);
+  }
+}
+
+long readDistance() {
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+  long duration = pulseIn(ECHO, HIGH);
+  long distance = duration * 0.034 / 2;
+  return distance;
+}
+
+float getAngle(Adafruit_MPU6050 &mpu, float offset) {
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
+
+  float angle = atan2(a.acceleration.y, a.acceleration.z) * 180 / PI;
+  return angle - offset;
+}
+
+void calibrate() {
+  float sumUpper = 0;
+  float sumLower = 0;
+
+  for (int i = 0; i < 100; i++) {
+    sensors_event_t a1, g1, t1;
+    sensors_event_t a2, g2, t2;
+
+    mpuUpper.getEvent(&a1, &g1, &t1);
+    mpuLower.getEvent(&a2, &g2, &t2);
+
+    sumUpper += atan2(a1.acceleration.y, a1.acceleration.z) * 180 / PI;
+    sumLower += atan2(a2.acceleration.y, a2.acceleration.z) * 180 / PI;
+
+    delay(10);
+  }
+
+  upperOffset = sumUpper / 100;
+  lowerOffset = sumLower / 100;
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
+
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+
+  Wire.begin();
+
+  mpuUpper.begin(0x68);
+  mpuLower.begin(0x69);
+
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+
+  delay(2000);
+  calibrate();
+
+  display.clearDisplay();
+  display.setCursor(0, 0);
+  display.println("Calibration Done");
+  display.display();
+  delay(2000);
+}
+
+void loop() {
+
+  long distance = readDistance();
+
+  if (distance < 100) {
+    if (!systemActive) {
+      if (detectStartTime == 0)
+        detectStartTime = millis();
+
+      if (millis() - detectStartTime > 5000) {
+        systemActive = true;
+        beep(3, 100);
+      }
+    }
+  } else {
+    detectStartTime = 0;
+
+    if (systemActive) {
+      systemActive = false;
+      beep(1, 200);
+    }
+  }
+
+  if (!systemActive) {
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+    return;
+  }
+
+  float upperAngle = abs(getAngle(mpuUpper, upperOffset));
+  float lowerAngle = abs(getAngle(mpuLower, lowerOffset));
+
+  display.clearDisplay();
+  display.setCursor(0, 0);
+
+  Serial.print("Upper: ");
+  Serial.print(upperAngle);
+  Serial.print(" | Lower: ");
+  Serial.println(lowerAngle);
+
+  if (upperAngle < SLIGHT_THRESHOLD && lowerAngle < SLIGHT_THRESHOLD) {
+
+    digitalWrite(GREEN_LED, HIGH);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+
+    display.println("Posture: GOOD");
+    display.println("Keep it up!");
+  }
+  else if (upperAngle < SEVERE_THRESHOLD && lowerAngle < SEVERE_THRESHOLD) {
+
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, HIGH);
+    digitalWrite(RED_LED, LOW);
+
+    display.println("Posture: SLIGHT");
+    display.println("Correct Slowly");
+
+    digitalWrite(BUZZER, HIGH);
+    delay(200);
+    digitalWrite(BUZZER, LOW);
+    delay(800);
+  }
+  else {
+
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, HIGH);
+
+    display.println("Posture: BAD");
+    display.println("Straighten Back!");
+
+    digitalWrite(BUZZER, HIGH);
+    delay(100);
+    digitalWrite(BUZZER, LOW);
+    delay(200);
+  }
+
+  display.display();
+  delay(200);
+}
+
             </pre>
         </div>
 
