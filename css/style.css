@@ -228,3 +228,12 @@ body {
     text-decoration: none;
     color: #10b981;
 }
+.project-card img {
+    width: 70%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    margin: 30px auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
