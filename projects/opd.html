@@ -1,1 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OPD Waiting Time Simulator | Masani Santhosh Kumar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* Container */
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+/* HERO */
+.project-hero {
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.project-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.project-subtitle {
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.8;
+}
+
+.project-section {
+    padding: 60px 0;
+}
+
+.project-card {
+    background: #0f1f2e;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.project-card h2 {
+    margin-bottom: 20px;
+}
+
+.project-card p {
+    margin-bottom: 15px;
+    color: #9db3c8;
+}
+
+/* SLIDER */
+.slider {
+    position: relative;
+    max-width: 900px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+
+/* Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dots span {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background: #1abc9c;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.dots .active {
+    opacity: 1;
+}
+
+/* Video */
+.video-section video {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 10px 25px;
+    border: 1px solid #1abc9c;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #1abc9c;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="project-hero">
+    <h1>OPD Waiting Time Analysis using Probability & Random Processes</h1>
+    <p class="project-subtitle">
+        A simulation tool that models OPD queue behaviour using random arrival patterns
+        and probability-based service distributions to optimize doctor staffing.
+    </p>
+</section>
+
+<!-- OVERVIEW -->
+<section class="project-section">
+<div class="project-card">
+<h2>Overview</h2>
+<p>
+This simulator recreates an OPD environment mathematically rather than using fixed values.
+It generates random patient arrivals, simulates consultation durations, models queue flow minute-by-minute,
+and calculates performance metrics such as waiting time and doctor utilization.
+</p>
+<p>
+The goal is to transform unpredictable hospital crowding into measurable,
+data-driven decision support.
+</p>
+</div>
+</section>
+
+<!-- STAR FORMAT -->
+<section class="project-section">
+<div class="project-card">
+<h2>Project Explained in STAR Format</h2>
+
+<p><strong>S — Situation:</strong><br>
+OPD crowding is unpredictable. When patient load spikes suddenly,
+waiting time increases sharply, harming satisfaction and efficiency.
+</p>
+
+<p><strong>T — Task:</strong><br>
+To mathematically analyze OPD queue flow and determine how many doctors
+are needed for minimum waiting time without overstaffing.
+</p>
+
+<p><strong>A — Action:</strong><br>
+I developed a Python-based simulation tool that:
+• Takes OPD input parameters  
+• Generates random arrival and service distributions  
+• Simulates queue progression minute-by-minute  
+• Calculates waiting time and utilization metrics  
+• Automatically detects staffing mismatch  
+• Provides visual graph-based insights  
+</p>
+
+<p><strong>R — Result:</strong><br>
+The simulation demonstrated that even a single doctor difference
+can drastically impact waiting time, proving the importance of
+data-driven staffing decisions.
+</p>
+
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="project-section">
+<div class="project-card">
+<h2>How the System Works</h2>
+
+<p>1️⃣ User enters number of doctors, patient arrival rate, and average consultation time.</p>
+<p>2️⃣ Random arrival times are generated using probability distribution logic.</p>
+<p>3️⃣ Service times are simulated using stochastic modelling.</p>
+<p>4️⃣ Queue builds dynamically based on arrival vs service rate.</p>
+<p>5️⃣ The system calculates:</p>
+
+<ul>
+<li>• Average waiting time</li>
+<li>• Maximum waiting time</li>
+<li>• Doctor utilization percentage</li>
+<li>• Queue length variations</li>
+</ul>
+
+<p>
+6️⃣ Based on results, the simulator recommends increasing or reducing staffing.
+</p>
+
+</div>
+</section>
+<!-- SOFTWARE USED -->
+<section class="project-section">
+<div class="project-card">
+
+<h2>Software Used</h2>
+
+<p>
+The simulation was developed and executed using:
+</p>
+
+<ul>
+<li>• <strong>Google Colab</strong> – For cloud-based Python execution</li>
+<li>• <strong>Python</strong> – Core simulation logic</li>
+<li>• <strong>Random & Math Modules</strong> – Probability modeling</li>
+</ul>
+
+<p>
+Google Colab allowed rapid testing, visualization, and parameter experimentation
+without requiring local installation.
+</p>
+
+</div>
+</section>
+<!-- CODE SECTION -->
+<section class="project-section">
+<div class="project-card">
+
+<h2>Python Simulation Code</h2>
+
+<p>
+Below is the core implementation of the OPD queue simulator
+based on M/M/c queue modelling and stochastic processes.
+</p>
+
+<div class="code-block">
+<pre><code>
+  import random
+import math
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+
+# ---------- Simulation Function ----------
+def simulate_opd(total_patients, session_hours, num_doctors, avg_service_time_min, seed=42):
+    """M/M/c style OPD simulation with random arrivals and service times."""
+    arrival_rate = total_patients / (session_hours * 60.0)   # patients per minute
+    service_rate = 1.0 / avg_service_time_min                # patients per minute per doctor
+
+    random.seed(seed)
+    arrival_times = [0.0]
+    for _ in range(1, total_patients):
+        inter = random.expovariate(arrival_rate)
+        arrival_times.append(arrival_times[-1] + inter)
+
+    service_times = [random.expovariate(service_rate) for _ in range(total_patients)]
+
+    doctor_next_free = [0.0] * num_doctors
+    doctor_busy = [0.0] * num_doctors
+
+    start_times, end_times, wait_times, assigned_doctor = [], [], [], []
+
+    for i in range(total_patients):
+        arr = arrival_times[i]
+        d = min(range(num_doctors), key=lambda x: doctor_next_free[x])
+
+        start = max(arr, doctor_next_free[d])
+        end = start + service_times[i]
+        wait = start - arr
+
+        doctor_next_free[d] = end
+        doctor_busy[d] += service_times[i]
+
+        start_times.append(start)
+        end_times.append(end)
+        wait_times.append(wait)
+        assigned_doctor.append(d)
+
+    avg_wait = sum(wait_times) / total_patients
+    max_wait = max(wait_times)
+    total_time = max(end_times) - min(arrival_times)
+    utilisation = sum(doctor_busy) / (total_time * num_doctors)
+
+    return {
+        "arrival": arrival_times,
+        "start": start_times,
+        "end": end_times,
+        "wait": wait_times,
+        "doctor": assigned_doctor,
+        "avg_wait": avg_wait,
+        "max_wait": max_wait,
+        "util": utilisation,
+    }
+
+# ---------- Input Section ----------
+print("Santhosh OPD Simulator\n")
+
+patients = int(input("Total patients in this OPD session        : "))
+hours    = float(input("Session duration (hours)                  : "))
+docs     = int(input("Number of doctors (current)               : "))
+t        = float(input("Average consultation time (minutes)       : "))
+
+# Internal rate calculations (not shown as formula in output)
+arrival_rate_per_hour = patients / hours
+service_rate_per_doc_per_hour = 60.0 / t
+capacity_current = service_rate_per_doc_per_hour * docs
+
+# Recommended number of doctors (internal only)
+recommended_docs = max(1, math.ceil(arrival_rate_per_hour / service_rate_per_doc_per_hour))
+
+# ---------- Simulate Current Setup ----------
+current = simulate_opd(patients, hours, docs, t)
+
+print("\n================= CURRENT OPD SUMMARY =================")
+print(f"Session duration              : {hours:.2f} hours")
+print(f"Total patients                : {patients}")
+print(f"Number of doctors (current)   : {docs}")
+print(f"Average consultation time     : {t:.2f} min/patient")
+print(f"Average arriving patients     : {arrival_rate_per_hour:.2f} per hour")
+print(f"Patients handled per hour     : {capacity_current:.2f} (approx.)")
+print("======================================================\n")
+
+print("----------- CURRENT PERFORMANCE ----------------------")
+print(f"Average waiting time          : {current['avg_wait']:.2f} minutes")
+print(f"Maximum waiting time          : {current['max_wait']:.2f} minutes")
+print(f"Overall doctor utilisation    : {current['util']*100:.2f}%")
+print("------------------------------------------------------\n")
+
+print("First 10 patients (illustration):")
+header = f"{'Pat':>3} | {'Arr(min)':>8} | {'Start(min)':>10} | {'End(min)':>8} | {'Wait(min)':>9} | {'Doc':>3}"
+print(header)
+print("-" * len(header))
+for i in range(min(10, patients)):
+    print(f"{i:>3} | "
+          f"{current['arrival'][i]:>8.2f} | "
+          f"{current['start'][i]:>10.2f} | "
+          f"{current['end'][i]:>8.2f} | "
+          f"{current['wait'][i]:>9.2f} | "
+          f"{current['doctor'][i]:>3}")
+
+# ---------- Graph: Current Setup ----------
+plt.figure(figsize=(9, 4))
+plt.bar(range(patients), current["wait"])
+plt.axhline(current["avg_wait"], linestyle="--")
+plt.title("Waiting Time per Patient - Current Setup")
+plt.xlabel("Patient index")
+plt.ylabel("Waiting time (minutes)")
+plt.grid(True, axis="y")
+plt.tight_layout()
+plt.show()
+
+# ---------- Case 1: No Recommendation Needed ----------
+if recommended_docs == docs:
+    fig, ax = plt.subplots(figsize=(8, 3))
+    ax.axis("off")
+
+    # simple neat text block
+    ax.text(0.08, 0.60, "Santhosh OPD Simulator", fontsize=18, fontweight="bold")
+    ax.text(
+        0.08, 0.40,
+        "The current number of doctors is suitable\nfor this OPD session.",
+        fontsize=11,
+    )
+
+    # box for thank you
+    box = FancyBboxPatch(
+        (0.06, 0.10), 0.88, 0.20,
+        boxstyle="round,pad=0.02",
+        edgecolor="black",
+        facecolor="whitesmoke",
+        linewidth=1.5,
+    )
+    ax.add_patch(box)
+    ax.text(
+        0.50,
+        0.20,
+        "Thanks for using Santhosh OPD Simulator\nGet well soon",
+        fontsize=13,
+        fontweight="bold",
+        ha="center",
+        va="center",
+    )
+
+    plt.tight_layout()
+    plt.show()
+
+# ---------- Case 2: Recommendation (overload or underload) ----------
+else:
+    improved = simulate_opd(patients, hours, recommended_docs, t)
+    capacity_rec = service_rate_per_doc_per_hour * recommended_docs
+
+    print("================= RECOMMENDATION ====================")
+    if recommended_docs > docs:
+        print(f"To handle this load more comfortably, using {recommended_docs} doctors")
+        print(f"instead of {docs} can reduce crowding and share the workload better.\n")
+    else:
+        print(f"For this load, {recommended_docs} doctors are sufficient instead of {docs}.")
+        print("This reduces idle time while keeping waiting times under control.\n")
+
+    print("Recommended configuration:")
+    print(f"- Doctors                    : {recommended_docs}")
+    print(f"- Patients handled per hour  : {capacity_rec:.2f} (approx.)")
+    print(f"- Average waiting time       : {improved['avg_wait']:.2f} minutes")
+    print(f"- Maximum waiting time       : {improved['max_wait']:.2f} minutes")
+    print(f"- Doctor utilisation         : {improved['util']*100:.2f}%")
+    print("======================================================\n")
+
+    print("Effect of applying this recommendation:")
+    print(f"- Average waiting time changes from {current['avg_wait']:.2f} min "
+          f"to {improved['avg_wait']:.2f} min.")
+    print(f"- Doctor utilisation changes from {current['util']*100:.1f}% "
+          f"to {improved['util']*100:.1f}%.")
+    print()
+
+    # Graph: Recommended setup
+    plt.figure(figsize=(9, 4))
+    plt.bar(range(patients), improved["wait"])
+    plt.axhline(improved["avg_wait"], linestyle="--")
+    plt.title(f"Waiting Time per Patient - Recommendation ({recommended_docs} Doctors)")
+    plt.xlabel("Patient index")
+    plt.ylabel("Waiting time (minutes)")
+    plt.grid(True, axis="y")
+    plt.tight_layout()
+    plt.show()
+
+    # Comparison table image (no overlap, only table + title)
+    fig, ax = plt.subplots(figsize=(8, 4))
+    ax.axis("off")
+
+    table_data = [
+        ["Parameter",              "Current",                         "Recommended"],
+        ["Number of doctors",      f"{docs}",                         f"{recommended_docs}"],
+        ["Patients/hour (approx.)",f"{capacity_current:.1f}",         f"{capacity_rec:.1f}"],
+        ["Avg waiting time (min)", f"{current['avg_wait']:.1f}",      f"{improved['avg_wait']:.1f}"],
+        ["Max waiting time (min)", f"{current['max_wait']:.1f}",      f"{improved['max_wait']:.1f}"],
+        ["Doctor utilisation (%)", f"{current['util']*100:.1f}",      f"{improved['util']*100:.1f}"],
+    ]
+
+    table = ax.table(
+        cellText=table_data[1:],
+        colLabels=table_data[0],
+        loc="center"
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1, 1.3)
+
+    ax.set_title("OPD CONFIGURATION COMPARISON", fontweight="bold", pad=20)
+    plt.tight_layout()
+    plt.show()
+
+    # Separate neat thank-you box
+    fig, ax = plt.subplots(figsize=(8, 2.5))
+    ax.axis("off")
+
+    box = FancyBboxPatch(
+        (0.06, 0.25), 0.88, 0.45,
+        boxstyle="round,pad=0.02",
+        edgecolor="black",
+        facecolor="whitesmoke",
+        linewidth=1.5,
+    )
+    ax.add_patch(box)
+    ax.text(
+        0.50,
+        0.48,
+        "Thanks for using Santhosh OPD Simulator\nGet well soon",
+        fontsize=13,
+        fontweight="bold",
+        ha="center",
+        va="center",
+    )
+
+    plt.tight_layout()
+    plt.show()
+</code></pre>
+</div>
+
+<p>
+The full implementation includes:
+</p>
+
+<ul>
+<li>• Random patient arrival generation</li>
+<li>• Exponential service time modelling</li>
+<li>• Doctor assignment logic</li>
+<li>• Waiting time computation</li>
+<li>• Utilisation calculation</li>
+<li>• Graphical performance visualization</li>
+<li>• Automatic staffing recommendation logic</li>
+</ul>
+
+</div>
+</section>
+<!-- RESULTS SLIDER -->
+<section class="project-section">
+<div class="project-card">
+<h2>Simulation Results</h2>
+
+<div class="slider">
+<div class="slides" id="slides">
+<img src="../assets/opd1.png">
+<img src="../assets/opd2.png">
+<img src="../assets/opd3.png">
+<img src="../assets/opd4.png">
+<img src="../assets/opd5.png">
+</div>
+
+<button class="prev" onclick="moveSlide(-1)">❮</button>
+<button class="next" onclick="moveSlide(1)">❯</button>
+</div>
+
+<div class="dots" id="dots"></div>
+
+</div>
+</section>
+
+<!-- VIDEO -->
+<section class="project-section video-section">
+<div class="project-card">
+<h2>Simulation Demo Video</h2>
+
+<video controls>
+<source src="../assets/opd-demo.mp4" type="video/mp4">
+</video>
+
+</div>
+</section>
+
+<a href="../index.html" class="back-btn">Back to Projects</a>
+
+</div>
+
+<script>
+
+let currentIndex = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+const dotsContainer = document.getElementById("dots");
+
+for(let i = 0; i < totalSlides; i++){
+    const dot = document.createElement("span");
+    dot.addEventListener("click", () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+}
+
+function updateDots(){
+    const dots = dotsContainer.children;
+    for(let i = 0; i < dots.length; i++){
+        dots[i].classList.remove("active");
+    }
+    dots[currentIndex].classList.add("active");
+}
+
+function moveSlide(step){
+    currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+}
+
+function goToSlide(index){
+    currentIndex = index;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+}
+
+updateDots();
+
+</script>
+
+</body>
+</html>
