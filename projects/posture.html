@@ -5,115 +5,143 @@
     <title>Posture Correction System | Masani Santhosh Kumar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Posture Correction System using Arduino Uno, dual MPU6050 sensors and ultrasonic activation for real-time posture monitoring.">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-<section class="project-hero">
-    <div class="container">
-        <h1>Posture Correction System</h1>
-        <p class="project-subtitle">
-            Real-time posture monitoring system using dual MPU6050 sensors,
-            ultrasonic-based activation and intelligent feedback indicators.
-        </p>
-        <div class="project-meta">
-            <span>Arduino Uno</span>
-            <span>Embedded Systems</span>
-            <span>2025</span>
-        </div>
-    </div>
-</section>
-
-<section class="project-section">
+<section class="projects">
     <div class="container">
 
-        <h2>Problem</h2>
-        <p>
-            Poor sitting posture is common among students and professionals,
-            leading to long-term neck and back issues. Continuous posture awareness
-            can prevent chronic spinal problems.
-        </p>
+        <h2>Posture Correction System</h2>
 
-        <h2>Objective</h2>
-        <p>
-            To design a low-cost, power-efficient embedded system that detects
-            incorrect posture in real time and alerts the user instantly.
-        </p>
-
-        <h2>System Overview</h2>
-        <p>
-            Two MPU6050 sensors are placed on upper and lower body.
-            The system activates only when ultrasonic sensor detects a user
-            continuously for 5 seconds.
-        </p>
-
-        <ul class="status-list">
-            <li>🟢 Correct posture → Green LED</li>
-            <li>🟡 Slight bend → Yellow LED + slow beep</li>
-            <li>🔴 Severe bend → Red LED + fast beep</li>
-            <li>No user detected → System turns OFF automatically</li>
-        </ul>
-
-        <h2>Components Used</h2>
-        <ul class="component-list">
-            <li>Arduino Uno</li>
-            <li>2 × MPU6050 Sensors</li>
-            <li>Ultrasonic Sensor (HC-SR04)</li>
-            <li>OLED Display (SSD1306)</li>
-            <li>3 LEDs (Red, Yellow, Green)</li>
-            <li>3 Resistors</li>
-            <li>Buzzer</li>
-        </ul>
-
-        <h2>Pin to Pin Connections</h2>
-        <p>
-            All connections are component pin → Arduino pin.
-        </p>
-
-        <div class="code-block">
-<pre>
-Green LED  → D2
-Yellow LED → D3
-Red LED    → D4
-Buzzer     → D8
-
-Ultrasonic:
-TRIG → D9
-ECHO → D10
-
-OLED:
-SDA → A4
-SCL → A5
-
-MPU6050 (Both):
-SDA → A4
-SCL → A5
-</pre>
+        <!-- Short Intro -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Project Overview</h3>
+            <p>
+                A real-time posture monitoring system built using Arduino Uno,
+                dual MPU6050 sensors, ultrasonic-based activation,
+                LED indicators, buzzer alerts, and OLED display feedback.
+            </p>
         </div>
 
-        <h2>Circuit Diagram</h2>
-        <img src="../assets/posture-circuit.jpg" class="project-image">
-
-        <h2>Hardware Setup</h2>
-        <img src="../assets/posture-hardware.jpg" class="project-image">
-
-        <h2>Arduino Code</h2>
-        <div class="code-block">
-<pre>
-// Code will be added here after final testing
-</pre>
+        <!-- STAR FORMAT -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>S — Situation</h3>
+            <p>
+                Poor sitting posture is a common issue among students and professionals.
+                Long hours of incorrect posture gradually lead to neck strain,
+                lower back pain, and long-term spinal problems.
+                Most people are unaware of their posture until pain appears.
+            </p>
         </div>
 
-        <h2>Result</h2>
-        <p>
-            The prototype successfully differentiates posture levels and provides
-            instant feedback. It encourages correct sitting habits and reduces
-            long-term posture related health risks.
-        </p>
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>T — Task</h3>
+            <p>
+                To design a low-cost, power-efficient embedded system that
+                continuously monitors posture in real time and alerts the user
+                immediately when incorrect posture is detected.
+            </p>
+        </div>
 
-        <a href="../index.html#projects" class="back-btn">← Back to Projects</a>
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>A — Action</h3>
+            <p>
+                I developed a hardware system using:
+                <br><br>
+                • Arduino Uno as the controller  
+                • Two MPU6050 sensors (Upper body & Lower body monitoring)  
+                • Ultrasonic sensor for smart activation  
+                • 3 LEDs (Green, Yellow, Red) for posture indication  
+                • Buzzer for audible alerts  
+                • OLED display for real-time posture status  
+            </p>
+
+            <p>
+                The ultrasonic sensor activates the system only when a person
+                is detected continuously for 5 seconds to avoid false detection
+                and reduce unnecessary power usage.
+            </p>
+
+            <p>
+                Posture logic:
+                <br>
+                🟢 Correct posture → Green LED  
+                🟡 Slight bend (upper or lower error) → Yellow LED + slow beep  
+                🔴 Severe bad posture → Red LED + faster buzzer pattern  
+            </p>
+        </div>
+
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>R — Result</h3>
+            <p>
+                The prototype successfully differentiates between correct posture,
+                slight deviation, and severe bad posture.
+                It provides instant visual and audio feedback,
+                encouraging healthy sitting habits.
+            </p>
+            <p>
+                This project demonstrates how embedded systems can be applied
+                practically for preventive healthcare and ergonomic improvement.
+            </p>
+        </div>
+
+        <!-- System Workflow -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>System Workflow</h3>
+            <p>
+                1. Ultrasonic sensor checks user presence.  
+                2. If user detected continuously for 5 seconds → System activates.  
+                3. MPU6050 sensors read body tilt angles.  
+                4. Arduino compares values with threshold angles.  
+                5. LEDs + Buzzer + OLED provide feedback.  
+                6. If no user detected for 5 seconds → System turns OFF.  
+            </p>
+        </div>
+
+        <!-- Components -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Components Used</h3>
+            <p>
+                • Arduino Uno  
+                • 2 × MPU6050 Sensors  
+                • Ultrasonic Sensor (HC-SR04)  
+                • OLED Display (SSD1306)  
+                • 3 LEDs (Red, Yellow, Green)  
+                • 3 Resistors  
+                • Buzzer  
+            </p>
+        </div>
+
+        <!-- Circuit Diagram -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Circuit Diagram</h3>
+            <img src="../assets/posture-circuit.jpg" 
+                 alt="Posture Circuit Diagram" 
+                 style="width:100%; border-radius:8px;">
+        </div>
+
+        <!-- Hardware Setup -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Hardware Setup</h3>
+            <img src="../assets/posture-hardware.jpg" 
+                 alt="Posture Hardware Setup" 
+                 style="width:100%; border-radius:8px;">
+        </div>
+
+        <!-- Arduino Code Section -->
+        <div class="project-card" style="margin-bottom:40px;">
+            <h3>Arduino Code</h3>
+            <pre style="background:#111827; padding:20px; border-radius:8px; overflow-x:auto; color:#fff;">
+// Final integrated Arduino code will be added here
+// after sensor calibration and threshold tuning.
+            </pre>
+        </div>
+
+        <a href="../index.html#projects" class="btn secondary">Back to Projects</a>
 
     </div>
 </section>
